@@ -63,7 +63,6 @@ jobs:
       continue-on-error: true
 
     - uses: actions/checkout@v3
-    - uses: ./
       if: github.event_name == 'pull_request'
       env:
         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
