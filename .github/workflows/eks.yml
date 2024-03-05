@@ -27,11 +27,11 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+      uses: hashicorp/setup-terraform@v3
 
 
 
@@ -62,7 +62,7 @@ jobs:
       run: terraform plan -no-color
       continue-on-error: true
 
-    - uses: actions/github-script@0.9.0
+    - uses: actions/github-script@7.0.1
       if: github.event_name == 'pull_request'
       env:
         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
