@@ -1,6 +1,6 @@
 provider "kubernetes" {
-  host                   = data.aws_eks_cluster.cluster.endpoint
-  cluster_ca_certificate = base64decode(module.eks_cluster.cluster.certificate_authority_data)
+  host                   = module.eks.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks.cluster.certificate_authority_data)
 }
 
 provider "aws" {
